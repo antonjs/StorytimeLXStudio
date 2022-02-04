@@ -4,25 +4,15 @@
   "tags": [ "storytime" ],
 
   "parameters": {
-    "lengthA": {
-      "type": "int", "default": 0, "min": 0, "max": 500,
-      "label": "A Length",
-      "description": "Length of side A"
+    "length": {
+      "type": "int", "default": 10, "min": 0, "max": 500,
+      "label": "Length",
+      "description": "Length in pixels"
     },
-    "lengthB": {
-      "type": "int", "default": 0, "min": 0, "max": 500,
-      "label": "B Length",
-      "description": "Length of side B"
-    },
-    "lengthC": {
-      "type": "int", "default": 0, "min": 0, "max": 500,
-      "label": "C Length",
-      "description": "Length of side C"
-    },
-    "lengthD": {
-      "type": "int", "default": 0, "min": 0, "max": 500,
-      "label": "D Length",
-      "description": "Length of side D"
+    "width": {
+      "type": "int", "default": 10, "min": 0, "max": 500,
+      "label": "Width",
+      "description": "Width in pixels"
     },
     "yoffset": {
       "type": "float", "default": 0, "min": 0, "max": 500,
@@ -46,19 +36,19 @@
 
   "components": [
     { "type": "strip",
-      "numPoints": "${lengthA}", "spacing":  "${spacing}",
+      "numPoints": "${length}", "spacing":  "${spacing}",
       "x": "${spacing}/2", "y": "${yoffset}", "z": "${zoffset}" },
 
     { "type": "strip",
-      "numPoints": "${lengthB}", "spacing": "${spacing}",
-      "x": "${lengthA} * ${spacing}", "y": "${yoffset}", "z": "${zoffset} + ${spacing}/2", "yaw": -90},
+      "numPoints": "${width}", "spacing": "${spacing}",
+      "x": "${length} * ${spacing}", "y": "${yoffset}", "z": "${zoffset} + ${spacing}/2", "yaw": -90},
 
     { "type": "strip",
-      "numPoints": "${lengthC}", "spacing": "${spacing}",
-      "x": "${lengthA} * ${spacing} - ${spacing}/2", "y": "${yoffset}", "z": "${zoffset} + ${lengthB} * ${spacing}", "yaw": -180},
+      "numPoints": "${length}", "spacing": "${spacing}",
+      "x": "${length} * ${spacing} - ${spacing}/2", "y": "${yoffset}", "z": "${zoffset} + ${width} * ${spacing}", "yaw": -180},
 
     { "type": "strip",
-      "numPoints": "${lengthD}", "spacing": "${spacing}",
-      "x": 0, "y": "${yoffset}", "z": "${zoffset} + ${lengthB} * ${spacing} - ${spacing}/2", "yaw": -270}
+      "numPoints": "${width}", "spacing": "${spacing}",
+      "x": 0, "y": "${yoffset}", "z": "${zoffset} + ${width} * ${spacing} - ${spacing}/2", "yaw": -270}
   ]
 }

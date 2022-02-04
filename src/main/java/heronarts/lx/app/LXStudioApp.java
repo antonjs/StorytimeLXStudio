@@ -19,6 +19,7 @@
 package heronarts.lx.app;
 
 import java.io.File;
+
 import heronarts.lx.LX;
 import heronarts.lx.LXComponent;
 import heronarts.lx.LXPlugin;
@@ -64,6 +65,7 @@ public class LXStudioApp extends PApplet implements LXPlugin {
     flags.resizable = true;
     flags.useGLPointCloud = false;
     flags.startMultiThreaded = true;
+    flags.mediaPath = ".";
 
     new LXStudio(this, flags);
     this.surface.setTitle(WINDOW_TITLE);
@@ -111,6 +113,8 @@ public class LXStudioApp extends PApplet implements LXPlugin {
     this.myComponent = new MyComponent(lx);
     lx.engine.registerComponent("myComponent", this.myComponent);
 
+
+    System.out.println("Mediapath: " + lx.flags.mediaPath);
   }
 
   public void initializeUI(LXStudio lx, LXStudio.UI ui) {
