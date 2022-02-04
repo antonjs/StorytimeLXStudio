@@ -1,0 +1,55 @@
+{
+  "fixtureType": "book",
+
+  "tags": [ "storytime", "book" ],
+
+  "parameters": {
+    "length": {
+      "type": "int",
+      "default": 134,
+      "min": 0,
+      "max": 1000,
+      "label": "Length",
+      "description": "Length in pixels"
+    },
+    "width": {
+      "type": "int",
+      "default": 52,
+      "min": 0,
+      "max": 1000,
+      "label": "Width",
+      "description": "Width in pixels"
+    },
+    "height": {
+      "type": "float",
+      "default": 16,
+      "min": 0,
+      "max": 48,
+      "label": "Height",
+      "description": "Strip vertical separation in distance units"
+    },
+    "spacing": {
+      "type": "float",
+      "default": 0.656,
+      "min": 0,
+      "max": 10,
+      "label": "Spacing",
+      "description": "Pixel spacing in inches"
+    }
+  },
+
+  // Books are two sets of strips, top and bottom, firing at a 45 degree angle into diffusive plastic.
+  // Each strip rectangle is composed of two or more actual strips depending on length.
+  //
+  // Origin of each strip is at the back-right (starboard) of the vehicle.
+  // Book origin is also at the back-right.
+
+  // Top book is 134 x 79 LEDs (inset in 8' x 5' book)
+  // Bottom book is 171 x 98 LEDs (inset in 10' x 6' book)
+  "components": [
+    { "type": "squarestrip", "length": "${length}", "width": "${width}", "spacing": "${spacing}",
+      "x": 0, "y": "${height}", "z": 0, "pitch": 180},
+    { "type": "squarestrip", "length": "${length}", "width": "${width}", "spacing": "${spacing}",
+      "x": 0, "y": 0, "z": 0, "pitch": 180}
+  ]
+}

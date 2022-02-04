@@ -37,15 +37,15 @@
   "components": [
     { "type": "strip",
       "numPoints": "${length}", "spacing":  "${spacing}",
-      "x": "${spacing}/2", "y": "${yoffset}", "z": "${zoffset}" },
+      "x": "-1 * ${spacing}/2", "y": "${yoffset}", "z": "${zoffset}", "yaw": 180 },
 
     { "type": "strip",
       "numPoints": "${width}", "spacing": "${spacing}",
-      "x": "${length} * ${spacing}", "y": "${yoffset}", "z": "${zoffset} + ${spacing}/2", "yaw": -90},
+      "x": "-1 * ${length} * ${spacing}", "y": "${yoffset}", "z": "${zoffset} + ${spacing}/2", "yaw": -90},
 
     { "type": "strip",
       "numPoints": "${length}", "spacing": "${spacing}",
-      "x": "${length} * ${spacing} - ${spacing}/2", "y": "${yoffset}", "z": "${zoffset} + ${width} * ${spacing}", "yaw": -180},
+      "x": "-1 * ${length} * ${spacing} + ${spacing}/2", "y": "${yoffset}", "z": "${zoffset} + ${width} * ${spacing}", "yaw": 0},
 
     { "type": "strip",
       "numPoints": "${width}", "spacing": "${spacing}",
