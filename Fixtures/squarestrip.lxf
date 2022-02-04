@@ -1,0 +1,64 @@
+{
+  "fixtureType": "squarestrip",
+
+  "tags": [ "storytime" ],
+
+  "parameters": {
+    "lengthA": {
+      "type": "int", "default": 0, "min": 0, "max": 500,
+      "label": "A Length",
+      "description": "Length of side A"
+    },
+    "lengthB": {
+      "type": "int", "default": 0, "min": 0, "max": 500,
+      "label": "B Length",
+      "description": "Length of side B"
+    },
+    "lengthC": {
+      "type": "int", "default": 0, "min": 0, "max": 500,
+      "label": "C Length",
+      "description": "Length of side C"
+    },
+    "lengthD": {
+      "type": "int", "default": 0, "min": 0, "max": 500,
+      "label": "D Length",
+      "description": "Length of side D"
+    },
+    "yoffset": {
+      "type": "float", "default": 0, "min": 0, "max": 500,
+      "label": "Y Offset",
+      "description": "Offset on Y axis"
+    },
+    "zoffset": {
+      "type": "float", "default": 0, "min": 0, "max": 500,
+      "label": "Z Offset",
+      "description": "Offset on Z axis"
+    },
+    "spacing": {
+      "type": "float",
+      "default": 0.656,
+      "min": 0,
+      "max": 10,
+      "label": "Spacing",
+      "description": "Pixel spacing in inches"
+    }
+  },
+
+  "components": [
+    { "type": "strip",
+      "numPoints": "${lengthA}", "spacing":  "${spacing}",
+      "x": "${spacing}/2", "y": "${yoffset}", "z": "${zoffset}" },
+
+    { "type": "strip",
+      "numPoints": "${lengthB}", "spacing": "${spacing}",
+      "x": "${lengthA} * ${spacing}", "y": "${yoffset}", "z": "${zoffset} + ${spacing}/2", "yaw": -90},
+
+    { "type": "strip",
+      "numPoints": "${lengthC}", "spacing": "${spacing}",
+      "x": "${lengthA} * ${spacing} - ${spacing}/2", "y": "${yoffset}", "z": "${zoffset} + ${lengthB} * ${spacing}", "yaw": -180},
+
+    { "type": "strip",
+      "numPoints": "${lengthD}", "spacing": "${spacing}",
+      "x": 0, "y": "${yoffset}", "z": "${zoffset} + ${lengthB} * ${spacing} - ${spacing}/2", "yaw": -270}
+  ]
+}
