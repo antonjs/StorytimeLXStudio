@@ -17,7 +17,7 @@
       "default": 6,
       "min": 0,
       "max": 48,
-      "label": "Radius",
+      "label": "Height",
       "description": "Per-segment height in inches"
     },
     "radius": {
@@ -48,42 +48,42 @@
   //public final static int LONG_SIDE_LED_COUNT = round(LEDS_PER_METER * LONG_SIDE_LENGTH / M);
   // 300/196.85*(196.85-12)/2
   "components": [
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": -6, "z": 6, "pitch": -90 },
 
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": 0, "z": 6, "pitch": -90 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": 0, "z": 6, "pitch": -105 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": 0, "z": 6, "pitch": -120 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": 0, "z": 6, "pitch": -135 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": 0, "z": 6, "pitch": -150 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": 0, "z": 6, "pitch": -165 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": 0, "z": 6, "pitch": -180 },
 
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": 0, "z": 0, "pitch": 0 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": 0, "z": 0, "pitch": -15 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": 0, "z": 0, "pitch": -30 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": 0, "z": 0, "pitch": -45 },
 
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": "-6 * 0.707", "z": "-6 * 0.707", "pitch": -45 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": "-12 * 0.707", "z": "-12 * 0.707", "pitch": -45 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": "-18 * 0.707", "z": "-18 * 0.707", "pitch": -45 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": "-24 * 0.707", "z": "-24 * 0.707", "pitch": -45 },
-    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.656,
+    { "type": "squarestrip", "length": 141, "width": 9, "yoffset": "${radius}", "zoffset": "-3", "spacing": 0.5,
       "x": 0, "y": "-30 * 0.707", "z": "-30 * 0.707", "pitch": -45 }
   ]
 }
