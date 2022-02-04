@@ -1,0 +1,31 @@
+{
+  "fixtureType": "book",
+
+  "tags": [ "storytime", "book" ],
+
+  "parameters": {
+    "spacing": {
+      "type": "float",
+      "default": 0.656,
+      "min": 0,
+      "max": 10,
+      "label": "Spacing",
+      "description": "Pixel spacing in inches"
+    }
+  },
+
+  // Books are two sets of strips, top and bottom, firing at a 45 degree angle into diffusive plastic.
+  // Each strip rectangle is composed of two or more actual strips depending on length.
+  //
+  // Origin of each strip is at the back-right (starboard) of the vehicle.
+  // Book origin is also at the back-right.
+
+  // Top book is 134 x 79 LEDs (inset in 8' x 5' book)
+  // Bottom book is 171 x 98 LEDs (inset in 10' x 6' book)
+  "components": [
+    { "type": "book", "length": 134, "width": 79, "height": 16, "spacing": "${spacing}",
+      "x": -12, "y": 20, "z": 26},
+    { "type": "book", "length": 171, "width": 98, "height": 18, "spacing": "${spacing}",
+      "x": 0, "y": 0, "z": 32}
+  ]
+}
