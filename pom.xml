@@ -80,6 +80,12 @@
 				<version>${maven-assembly-plugin.version}</version>
 
 				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>heronarts.lx.app.LXStudioApp</mainClass>
+						</manifest>
+					</archive>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
