@@ -1,0 +1,60 @@
+{
+  "fixtureType": "lampshade",
+
+  "tags": [ "storytime", "lampshade" ],
+
+  "parameters": {
+    "striplength": {
+      "type": "float",
+      "default": 92.5,
+      "min": 0,
+      "max": 100,
+      "label": "Length",
+      "description": "Length in inches"
+    },
+    "stripheight": {
+      "type": "float",
+      "default": 6,
+      "min": 0,
+      "max": 48,
+      "label": "Radius",
+      "description": "Per-segment height in inches"
+    },
+    "radius": {
+      "type": "float",
+      "default": 22,
+      "min": 0,
+      "max": 100,
+      "label": "Radius",
+      "description": "Lampshade arc radius in inches"
+    },
+    "spacing": {
+      "type": "float",
+      "default": 0.656,
+      "min": 0,
+      "max": 10,
+      "label": "Spacing",
+      "description": "Pixel spacing in inches"
+    }
+  },
+
+  //public final static float LEDS_PER_METER = 60;
+  //public final static float LEDS_PER_STRIP = 300;
+  //public final static float LED_SPACING = 1 * M / LEDS_PER_METER;
+  //
+  //public final static float SHORT_SIDE_LENGTH = 6 * IN;
+  //public final static float LONG_SIDE_LENGTH = (5 * M - 12 * IN) / 2;
+  //public final static int SHORT_SIDE_LED_COUNT = round(LEDS_PER_METER * SHORT_SIDE_LENGTH / M);
+  //public final static int LONG_SIDE_LED_COUNT = round(LEDS_PER_METER * LONG_SIDE_LENGTH / M);
+  // 300/196.85*(196.85-12)/2
+  "components": [
+    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "spacing": 0.656,
+      "x": 0, "y": 0, "z": -3, "pitch": 0, "yoffset": 10, "zoffset": -3 },
+    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "spacing": 0.656,
+      "x": 0, "y": 0, "z": -3, "pitch": -30, "yoffset": 10, "zoffset": -3 },
+    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "spacing": 0.656,
+      "x": 0, "y": 0, "z": -3, "pitch": -60, "yoffset": 10, "zoffset": -3 },
+    { "type": "squarestrip", "lengthA": 141, "lengthB": 9, "lengthC": 141, "lengthD": 9, "spacing": 0.656,
+      "x": 0, "y": 0, "z": -3, "pitch": -90, "yoffset": 10, "zoffset": -3 }
+  ]
+}
