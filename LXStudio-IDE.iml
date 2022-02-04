@@ -34,7 +34,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="core.jar">
@@ -231,8 +231,5 @@
     <orderEntry type="library" name="Maven: uk.co.xfactory-librarians:coremidi4j:1.6" level="project" />
     <orderEntry type="library" name="Maven: com.heronarts:p4lx:0.4.0" level="project" />
     <orderEntry type="library" name="Maven: com.heronarts:lxstudio:0.4.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.processing:core:4.0b2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jogamp.jogl:jogl-all:2.4.0-rc-20210111" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jogamp.gluegen:gluegen-rt-main:2.4.0-rc-20210111" level="project" />
   </component>
 </module>
