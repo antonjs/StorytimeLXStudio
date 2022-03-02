@@ -20,7 +20,7 @@ More  documentation for the overall lighting system is [in the Storytime Notion]
    3. Fix the Maven errors
       1. File -> Project Structure -> Problems
       2. Hit 'Fix' on the processing libraries with the wrong paths
-3. Install the processing poms so that you can packagee with Maven
+3. Install the processing poms so that you can package with Maven
    1. Clone https://github.com/heronarts/P4LX.git
    2. Enter the repository and run `mvn validate`
 
@@ -34,6 +34,15 @@ You can run LXStudio from inside an IDE, but to deploy to the car you need to bu
 This JAR does not actually contain all the dependencies, because processing, jogamp and gluegen aren't packaged in this way. They will need to be deployed alongside the JAR, instructions tbd.
 
 ## Model
+The model has three key components:
+1. Lampshade
+2. Books
+3. Pole
+
+Each is tagged with the appropriate name for use in the channel selectors.
+
+## Channels
+
 
 ## Patterns
 

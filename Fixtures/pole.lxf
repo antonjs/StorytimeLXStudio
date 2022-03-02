@@ -1,0 +1,48 @@
+{
+  "fixtureType": "pole",
+
+  "tags": [ "storytime", "pole" ],
+
+  "parameters": {
+    "height": {
+      "type": "int", "default": 150, "min": 0, "max": 500,
+      "label": "Height",
+      "description": "Height in pixels"
+    },
+    "width": {
+      "type": "float", "default": 12, "min": 0, "max": 72,
+      "label": "Width",
+      "description": "Width in inches"
+    },
+    "spacing": {
+      "type": "float",
+      "default": 0.656,
+      "min": 0,
+      "max": 10,
+      "label": "Spacing",
+      "description": "Pixel spacing in inches"
+    }
+  },
+
+  // Pole is some number of vertical strips, spaced apart in a square.
+  // Basically TBD as to how this will actually work, since we need to upgrade it.
+  // Origin is at bottom left corner.
+  
+  "components": [
+    { "type": "strip",
+      "numPoints": "${height}", "spacing":  "${spacing}",
+      "x": 0, "y": 0, "z": 0, "roll": 90 },
+
+    { "type": "strip",
+      "numPoints": "${height}", "spacing":  "${spacing}",
+      "x": "${width}", "y": 0, "z": 0, "roll": 90 },
+
+    { "type": "strip",
+      "numPoints": "${height}", "spacing":  "${spacing}",
+      "x": "${width}", "y": 0, "z": "${width}", "roll": 90 },
+
+    { "type": "strip",
+      "numPoints": "${height}", "spacing":  "${spacing}",
+      "x": 0, "y": 0, "z": "${width}", "roll": 90 }
+  ]
+}
