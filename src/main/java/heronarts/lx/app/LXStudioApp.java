@@ -114,6 +114,13 @@ public class LXStudioApp extends PApplet implements LXPlugin {
     lx.engine.registerComponent("myComponent", this.myComponent);
 
 
+    // Patterns
+    lx.registry.addPattern(storytime.lx.app.pattern.WorkLightPattern.class);
+    lx.registry.addPattern(storytime.lx.app.pattern.PolyTestPattern.class);
+
+    // Effects
+    lx.registry.addEffect(storytime.lx.app.effect.PowerLimiterEffect.class);
+
     System.out.println("Mediapath: " + lx.flags.mediaPath);
   }
 
