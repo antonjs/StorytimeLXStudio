@@ -58,6 +58,12 @@
 			<version>2.4.0-rc-20210111</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.10</version>
+		</dependency>
 	</dependencies>
 
 	<build>
