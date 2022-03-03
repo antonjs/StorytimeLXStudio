@@ -17,3 +17,5 @@ application.macosx
 bin/
 target/
 classes/
+.idea/
+.ipynb_checkpoints/
