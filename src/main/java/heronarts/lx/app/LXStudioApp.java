@@ -18,12 +18,13 @@
 
 package heronarts.lx.app;
 
-import java.io.File;
-
 import heronarts.lx.LX;
 import heronarts.lx.LXPlugin;
 import heronarts.lx.studio.LXStudio;
+import heronarts.lx.studio.UIDashInputs;
 import processing.core.PApplet;
+
+import java.io.File;
 
 /**
  * This is an example top-level class to build and run an LX Studio
@@ -81,9 +82,14 @@ public class LXStudioApp extends PApplet implements LXPlugin {
     lx.registry.addPattern(heronarts.lx.app.pattern.AppPattern.class);
     lx.registry.addEffect(heronarts.lx.app.effect.AppEffect.class);
 
+    // Modulators
+    lx.registry.addModulator(storytime.lx.app.modulator.DashInputs.class);
+
     // Patterns
     lx.registry.addPattern(storytime.lx.app.pattern.WorkLightPattern.class);
     lx.registry.addPattern(storytime.lx.app.pattern.PolyTestPattern.class);
+    lx.registry.addPattern(storytime.lx.app.pattern.PolyTracePattern.class);
+    lx.registry.addPattern(storytime.lx.app.pattern.PolyFillPattern.class);
 
     // Effects
     lx.registry.addEffect(storytime.lx.app.effect.PowerLimiterEffect.class);
@@ -95,6 +101,7 @@ public class LXStudioApp extends PApplet implements LXPlugin {
     // Here is where you may modify the initial settings of the UI before it is fully
     // built. Note that this will not be called in headless mode. Anything required
     // for headless mode should go in the raw initialize method above.
+    UIDashInputs.register(ui);
   }
 
   public void onUIReady(LXStudio lx, LXStudio.UI ui) {
