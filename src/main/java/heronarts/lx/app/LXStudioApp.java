@@ -81,6 +81,13 @@ public class LXStudioApp extends PApplet implements LXPlugin {
     lx.registry.addPattern(heronarts.lx.app.pattern.AppPattern.class);
     lx.registry.addEffect(heronarts.lx.app.effect.AppEffect.class);
 
+    // Patterns
+    lx.registry.addPattern(storytime.lx.app.pattern.WorkLightPattern.class);
+    lx.registry.addPattern(storytime.lx.app.pattern.PolyTestPattern.class);
+
+    // Effects
+    lx.registry.addEffect(storytime.lx.app.effect.PowerLimiterEffect.class);
+
     System.out.println("Mediapath: " + lx.flags.mediaPath);
   }
 
