@@ -126,6 +126,7 @@ public class LXStudioApp extends PApplet implements LXPlugin {
 
     // Effects
     lx.registry.addEffect(storytime.lx.app.effect.PowerLimiterEffect.class);
+    lx.registry.addEffect(storytime.lx.app.effect.OutputGammaEffect.class);
 
     System.out.println("Mediapath: " + lx.flags.mediaPath);
   }
