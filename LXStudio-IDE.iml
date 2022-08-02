@@ -23,9 +23,10 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="temurin-17" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="core-4.0b8.jar">
@@ -95,6 +96,7 @@
     <orderEntry type="library" name="Maven: com.heronarts:lx:0.4.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.9" level="project" />
     <orderEntry type="library" name="Maven: uk.co.xfactory-librarians:coremidi4j:1.6" level="project" />
+    <orderEntry type="library" name="Maven: org.jmdns:jmdns:3.5.7" level="project" />
     <orderEntry type="library" name="Maven: com.heronarts:p4lx:0.4.1" level="project" />
     <orderEntry type="library" name="Maven: com.heronarts:lxstudio:0.4.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.processing:core:4.0b8" level="project" />
