@@ -24,8 +24,8 @@
   // Bottom book is 171 x 98 LEDs (inset in 10' x 6' book)
   "components": [
     { "type": "book", "length": 134, "width": 79, "height": 16, "spacing": "${spacing}",
-      "x": -12, "y": 20, "z": 26},
+      "x": -12, "y": 20, "z": 26, "uverseTop":  58, "uverseBottom":  63},
     { "type": "book", "length": 171, "width": 98, "height": 18, "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 32}
+      "x": 0, "y": 0, "z": 32, "uverseTop":  68, "uverseBottom":  74}
   ]
 }

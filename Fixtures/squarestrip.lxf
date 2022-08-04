@@ -1,26 +1,38 @@
 {
   "fixtureType": "squarestrip",
-
-  "tags": [ "storytime" ],
-
+  "tags": [
+    "storytime"
+  ],
   "parameters": {
     "length": {
-      "type": "int", "default": 10, "min": 0, "max": 500,
+      "type": "int",
+      "default": 10,
+      "min": 0,
+      "max": 500,
       "label": "Length",
       "description": "Length in pixels"
     },
     "width": {
-      "type": "int", "default": 10, "min": 0, "max": 500,
+      "type": "int",
+      "default": 10,
+      "min": 0,
+      "max": 500,
       "label": "Width",
       "description": "Width in pixels"
     },
     "yoffset": {
-      "type": "float", "default": 0, "min": 0, "max": 500,
+      "type": "float",
+      "default": 0,
+      "min": 0,
+      "max": 500,
       "label": "Y Offset",
       "description": "Offset on Y axis"
     },
     "zoffset": {
-      "type": "float", "default": 0, "min": 0, "max": 500,
+      "type": "float",
+      "default": 0,
+      "min": 0,
+      "max": 500,
       "label": "Z Offset",
       "description": "Offset on Z axis"
     },
@@ -31,24 +43,60 @@
       "max": 10,
       "label": "Spacing",
       "description": "Pixel spacing in inches"
+    },
+    "uverse": {
+      "type": "int",
+      "default": 1,
+      "min": 0,
+      "max": 512,
+      "label": "Universe",
+      "description": "Artnet Universe"
     }
   },
-
   "components": [
-    { "type": "strip",
-      "numPoints": "${length}", "spacing":  "${spacing}",
-      "x": "-1 * ${spacing}/2", "y": "${yoffset}", "z": "${zoffset}", "yaw": 180 },
-
-    { "type": "strip",
-      "numPoints": "${width}", "spacing": "${spacing}",
-      "x": "-1 * ${length} * ${spacing}", "y": "${yoffset}", "z": "${zoffset} + ${spacing}/2", "yaw": -90},
-
-    { "type": "strip",
-      "numPoints": "${length}", "spacing": "${spacing}",
-      "x": "-1 * ${length} * ${spacing} + ${spacing}/2", "y": "${yoffset}", "z": "${zoffset} + ${width} * ${spacing}", "yaw": 0},
-
-    { "type": "strip",
-      "numPoints": "${width}", "spacing": "${spacing}",
-      "x": 0, "y": "${yoffset}", "z": "${zoffset} + ${width} * ${spacing} - ${spacing}/2", "yaw": -270}
+    {
+      "type": "strip",
+      "numPoints": "${length}",
+      "spacing": "${spacing}",
+      "x": "-1 * ${spacing}/2",
+      "y": "${yoffset}",
+      "z": "${zoffset}",
+      "yaw": 180
+    },
+    {
+      "type": "strip",
+      "numPoints": "${width}",
+      "spacing": "${spacing}",
+      "x": "-1 * ${length} * ${spacing}",
+      "y": "${yoffset}",
+      "z": "${zoffset} + ${spacing}/2",
+      "yaw": -90
+    },
+    {
+      "type": "strip",
+      "numPoints": "${length}",
+      "spacing": "${spacing}",
+      "x": "-1 * ${length} * ${spacing} + ${spacing}/2",
+      "y": "${yoffset}",
+      "z": "${zoffset} + ${width} * ${spacing}",
+      "yaw": 0
+    },
+    {
+      "type": "strip",
+      "numPoints": "${width}",
+      "spacing": "${spacing}",
+      "x": 0,
+      "y": "${yoffset}",
+      "z": "${zoffset} + ${width} * ${spacing} - ${spacing}/2",
+      "yaw": -270
+    }
+  ],
+  "outputs": [
+    {
+      "protocol": "artnet",
+      "universe": "${uverse}",
+      "host": "127.0.0.1",
+      "start": 0
+    }
   ]
 }

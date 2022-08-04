@@ -49,44 +49,44 @@
   "components": [
     // Vertical back strip before arc
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": -6, "z": 6, "pitch": -90, "yaw": 0 },
+      "x": 0, "y": -6, "z": 6, "pitch": -90, "yaw": 0, "uverse": 49 },
 
     // Back side 90 degree arc from vertical to vertical. The panels don't make it perfectly flat on the top in the real car, but this is close enough.
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -90 },
+      "x": 0, "y": 0, "z": 6, "pitch": -90, "uverse": 46 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -105 },
+      "x": 0, "y": 0, "z": 6, "pitch": -105, "uverse": 43 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -120 },
+      "x": 0, "y": 0, "z": 6, "pitch": -120, "uverse": 40 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -135 },
+      "x": 0, "y": 0, "z": 6, "pitch": -135, "uverse": 37 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -150 },
+      "x": 0, "y": 0, "z": 6, "pitch": -150, "uverse": 34 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -165 },
+      "x": 0, "y": 0, "z": 6, "pitch": -165, "uverse": 31 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -180 },
+      "x": 0, "y": 0, "z": 6, "pitch": -180, "uverse": 28 },
 
     // Front side 45 degree arc. We reverse the rotation direction to align the origin point of the strip properly.
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 0, "pitch": 0 },
+      "x": 0, "y": 0, "z": 0, "pitch": 0, "uverse": 25 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 0, "pitch": -15 },
+      "x": 0, "y": 0, "z": 0, "pitch": -15, "uverse": 22 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 0, "pitch": -30 },
+      "x": 0, "y": 0, "z": 0, "pitch": -30, "uverse": 19 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 0, "pitch": -45 },
+      "x": 0, "y": 0, "z": 0, "pitch": -45, "uverse": 16 },
 
     // Front side 45 degree slope down to the bottom.
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": "-6 * 0.707", "z": "-6 * 0.707", "pitch": -45 },
+      "x": 0, "y": "-6 * 0.707", "z": "-6 * 0.707", "pitch": -45, "uverse": 13 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": "-12 * 0.707", "z": "-12 * 0.707", "pitch": -45 },
+      "x": 0, "y": "-12 * 0.707", "z": "-12 * 0.707", "pitch": -45, "uverse": 10 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": "-18 * 0.707", "z": "-18 * 0.707", "pitch": -45 },
+      "x": 0, "y": "-18 * 0.707", "z": "-18 * 0.707", "pitch": -45, "uverse": 7 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": "-24 * 0.707", "z": "-24 * 0.707", "pitch": -45 },
+      "x": 0, "y": "-24 * 0.707", "z": "-24 * 0.707", "pitch": -45, "uverse": 4 },
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": "-30 * 0.707", "z": "-30 * 0.707", "pitch": -45 }
+      "x": 0, "y": "-30 * 0.707", "z": "-30 * 0.707", "pitch": -45, "uverse": 1}
   ]
 }

@@ -35,6 +35,22 @@
       "max": 10,
       "label": "Spacing",
       "description": "Pixel spacing in inches"
+    },
+    "uverseTop": {
+      "type": "int",
+      "default": 1,
+      "min": 0,
+      "max": 512,
+      "label": "Universe",
+      "description": "Artnet Universe"
+    },
+    "uverseBottom": {
+      "type": "int",
+      "default": 1,
+      "min": 0,
+      "max": 512,
+      "label": "Universe",
+      "description": "Artnet Universe"
     }
   },
 
@@ -48,8 +64,8 @@
   // Bottom book is 171 x 98 LEDs (inset in 10' x 6' book)
   "components": [
     { "type": "squarestrip", "length": "${length}", "width": "${width}", "spacing": "${spacing}",
-      "x": 0, "y": "${height}", "z": 0, "pitch": 180},
+      "x": 0, "y": "${height}", "z": 0, "pitch": 180, "uverse": "${uverseTop}"},
     { "type": "squarestrip", "length": "${length}", "width": "${width}", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 0, "pitch": 180}
+      "x": 0, "y": 0, "z": 0, "pitch": 180, "uverse":  "${uverseBottom}"}
   ]
 }
