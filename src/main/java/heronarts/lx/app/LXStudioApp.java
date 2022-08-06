@@ -119,6 +119,7 @@ public class LXStudioApp extends PApplet implements LXPlugin {
 
 
     // Patterns
+    lx.registry.addPattern(storytime.lx.app.pattern.DebugPattern.class);
     lx.registry.addPattern(storytime.lx.app.pattern.WorkLightPattern.class);
     lx.registry.addPattern(storytime.lx.app.pattern.PolyTestPattern.class);
     lx.registry.addPattern(storytime.lx.app.pattern.PolyTracePattern.class);
@@ -145,6 +146,21 @@ public class LXStudioApp extends PApplet implements LXPlugin {
 
       new UIKnob(0, 0, myComponent.param1).addToContainer(this);
       new UIKnob(40, 0, myComponent.param2).addToContainer(this);
+
+//      new UIKnob(dashInputs.intensity.addToContainer(uiModulator);
+//      new UIKnob(dashInputs.vibe).addToContainer(uiModulator);
+//      new UIKnob(dashInputs.mood).addToContainer(uiModulator);
+//      new UIKnob(dashInputs.disco).addToContainer(uiModulator);
+//      new UIKnob(dashInputs.transition).addToContainer(uiModulator);
+//      new UIKnob(dashInputs.user).addToContainer(uiModulator);
+//
+//      new UIButton(16.0F, 16.0F, dashInputs.auto).addToContainer(uiModulator);
+//      new UIButton(16.0F, 16.0F, dashInputs.effect).addToContainer(uiModulator);
+//
+//      new UIButton(16.0F, 16.0F, dashInputs.trigger1).setTriggerable(true).addToContainer(uiModulator);
+//      new UIButton(16.0F, 16.0F, dashInputs.trigger2).setTriggerable(true).addToContainer(uiModulator);
+//      new UIButton(16.0F, 16.0F, dashInputs.trigger3).setTriggerable(true).addToContainer(uiModulator);
+//      new UIButton(16.0F, 16.0F, dashInputs.trigger4).setTriggerable(true).addToContainer(uiModulator);
     }
   }
 

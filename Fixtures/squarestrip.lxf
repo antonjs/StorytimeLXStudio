@@ -1,7 +1,7 @@
 {
   "fixtureType": "squarestrip",
   "tags": [
-    "storytime"
+    "squarestrip", "storytime"
   ],
   "parameters": {
     "length": {
@@ -98,5 +98,9 @@
       "host": "127.0.0.1",
       "start": 0
     }
-  ]
+  ],
+  "metadata": {
+    "width": "${width}",
+    "length": "${length}"
+  }
 }
