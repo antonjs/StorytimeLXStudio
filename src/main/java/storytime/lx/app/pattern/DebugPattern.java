@@ -9,7 +9,6 @@ import heronarts.lx.model.LXPoint;
 import heronarts.lx.modulator.LinearEnvelope;
 import heronarts.lx.parameter.BooleanParameter;
 import heronarts.lx.parameter.CompoundParameter;
-import heronarts.lx.parameter.DiscreteParameter;
 import heronarts.lx.parameter.EnumParameter;
 import heronarts.lx.pattern.LXPattern;
 import storytime.lx.model.LampshadeView;
@@ -34,11 +33,11 @@ public class DebugPattern extends LXPattern {
 
   public final CompoundParameter brightness = new CompoundParameter("Brightness", 1, 1)
           .setDescription("Brightness percentage");
-  public final DiscreteParameter r = new DiscreteParameter("R", 255, 0, 256);
-  public final DiscreteParameter g = new DiscreteParameter("G", 0, 0, 256);
-  public final DiscreteParameter b = new DiscreteParameter("B", 0, 0, 256);
+  public final CompoundParameter r = new CompoundParameter("R", 255, 0, 255);
+  public final CompoundParameter g = new CompoundParameter("G", 0, 0, 255);
+  public final CompoundParameter b = new CompoundParameter("B", 0, 0, 255);
 
-  public final DiscreteParameter pixel = new DiscreteParameter("Pixel", 0, 1);
+  public final CompoundParameter pixel = new CompoundParameter("Pixel", 0, 1);
 
   public final EnumParameter<MODE> mode = new EnumParameter<MODE>("Mode", MODE.PORT);
 
@@ -54,6 +53,12 @@ public class DebugPattern extends LXPattern {
 
     this.lampshadeView = new LampshadeView(lx.getModel());
 
+//    // Make discrete parameters mappable
+//    r.setMappable(true);
+//    b.setMappable(true);
+//    g.setMappable(true);
+//    pixel.setMappable(true);
+
     addParameter("on", this.on);
     addParameter("brightness", this.brightness);
     addParameter("r", this.r);
@@ -64,9 +69,7 @@ public class DebugPattern extends LXPattern {
 
     addModulator("fader", this.fader);
 
-    // Figure out the maximum number of points any particular port has so we can size the pixel parameter properly.
-    int maxPortPoints = this.lampshadeView.polygons.size(); // At a minimum the number of polygons.
-    for (int i = 1; i <= NUM_PORTS; i++) {
+     for (int i = 1; i <= NUM_PORTS; i++) {
       BooleanParameter portOn = new BooleanParameter(String.format("%d", i))
               .setDescription(String.format("Port %d is on", i))
               .setMode(BooleanParameter.Mode.TOGGLE)
@@ -74,11 +77,9 @@ public class DebugPattern extends LXPattern {
 
       ports.add(portOn);
       addParameter(String.format("port-%d", i), portOn);
-
-      maxPortPoints = Math.max(maxPortPoints, getPortPoints(i).size());
     }
 
-    this.pixel.setRange(0, maxPortPoints);
+//    this.pixel.set.setRange(0, maxPortPoints);
 
     this.on.addListener((p) -> {
       if (null == this.getChannel()) return; // Avoid crash when this gets called while initializing the pattern.
@@ -131,6 +132,21 @@ public class DebugPattern extends LXPattern {
     return getPortPoints(String.format("%d", port));
   }
 
+  /**
+   * Get the maximum number of pixels across all the enabled ports.
+   * @return
+   */
+  int portPixelCount() {
+    int maxPoints = 0;
+    for (BooleanParameter port : ports) {
+      if (port.isOn()) {
+        maxPoints = Math.max(maxPoints, getPortPoints(port.getLabel()).size());
+      }
+    }
+
+    return maxPoints;
+  }
+
   @Override
   protected void run(double deltaMs) {
     if (!this.on.isOn()) {
@@ -148,7 +164,7 @@ public class DebugPattern extends LXPattern {
         }
       }
     } else if (mode.getEnum() == MODE.POLY) {
-      int polyIndex = Math.min(pixel.getValuei(), this.lampshadeView.polygons.size()-1);
+      int polyIndex = Math.min((int)(pixel.getValue()*lampshadeView.polygons.size()), this.lampshadeView.polygons.size()-1);
       points = this.lampshadeView.polygons.get(polyIndex).points;
     } else if (mode.getEnum() == MODE.CORNER) {
       for (BooleanParameter port : ports) {
@@ -161,30 +177,35 @@ public class DebugPattern extends LXPattern {
             points.add(modelPoints.get(0)); // Start corner
             points.add(modelPoints.get(modelPoints.size()-1));
 
-            points.add(modelPoints.get(length - 1)); // Second corner
-            points.add(modelPoints.get(length)); // Second corner
+            points.add(modelPoints.get(width - 1)); // Second corner
+            points.add(modelPoints.get(width)); // Second corner
 
             points.add(modelPoints.get(length + width - 1));
             points.add(modelPoints.get(length + width));
 
-            points.add(modelPoints.get(length*2 + width - 1));
-            points.add(modelPoints.get(length*2 + width));
+            points.add(modelPoints.get(width*2 + length - 1));
+            points.add(modelPoints.get(width*2 + length));
           }
         }
       }
     } else if (mode.getEnum() == MODE.PIXEL) {
       for (BooleanParameter port : ports) {
+        int pixelIndex = (int)(pixel.getValue() * (portPixelCount()-1));
+
         if (port.isOn()) {
           List<LXPoint> portPoints = getPortPoints(port.getLabel());
-          if (pixel.getValuei() < portPoints.size()) {
-            points.add(portPoints.get(pixel.getValuei()));
+          if ((int)pixel.getValue() < portPoints.size()) {
+            points.add(portPoints.get(pixelIndex));
           }
         }
       }
     }
 
     for (LXPoint p : points) {
-      colors[p.index] = LXColor.rgb(this.r.getValuei(), this.g.getValuei(), this.b.getValuei());
+      colors[p.index] = LXColor.lerp(
+              LXColor.BLACK,
+              LXColor.rgb((int)this.r.getValue(), (int)this.g.getValue(), (int)this.b.getValue()),
+              this.brightness.getValue());
     }
   }
 

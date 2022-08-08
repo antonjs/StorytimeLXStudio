@@ -56,6 +56,15 @@
   "components": [
     {
       "type": "strip",
+      "numPoints": "${width}",
+      "spacing": "${spacing}",
+      "x": 0,
+      "y": "${yoffset}",
+      "z": "${zoffset} + ${width} * ${spacing} - ${spacing}/2",
+      "yaw": -270
+    },
+    {
+      "type": "strip",
       "numPoints": "${length}",
       "spacing": "${spacing}",
       "x": "-1 * ${spacing}/2",
@@ -80,23 +89,6 @@
       "y": "${yoffset}",
       "z": "${zoffset} + ${width} * ${spacing}",
       "yaw": 0
-    },
-    {
-      "type": "strip",
-      "numPoints": "${width}",
-      "spacing": "${spacing}",
-      "x": 0,
-      "y": "${yoffset}",
-      "z": "${zoffset} + ${width} * ${spacing} - ${spacing}/2",
-      "yaw": -270
-    }
-  ],
-  "outputs": [
-    {
-      "protocol": "artnet",
-      "universe": "${uverse}",
-      "host": "127.0.0.1",
-      "start": 0
     }
   ],
   "metadata": {
