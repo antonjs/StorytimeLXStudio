@@ -34,7 +34,7 @@ public class PolyFillPattern extends PolyTracePattern {
                 for (LampshadePolygon neighbour : curr.neighbours) {
                     // Check that this neighbour isn't already in the path anywhere so we don't
                     // overlap / backtrack
-                    if (next.contains(neighbour)) break; // XXX: shouldn't this be continue?
+                    if (next.contains(neighbour)) continue; // XXX: shouldn't this be continue?
 
                     for (List<LampshadePolygon> previous : this.polyPath) {
                         if (previous.contains(neighbour)) {

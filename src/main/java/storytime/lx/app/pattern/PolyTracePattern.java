@@ -5,9 +5,7 @@ import heronarts.lx.LXCategory;
 import heronarts.lx.color.LXColor;
 import heronarts.lx.model.LXPoint;
 import heronarts.lx.modulator.Click;
-import heronarts.lx.parameter.CompoundParameter;
-import heronarts.lx.parameter.DiscreteParameter;
-import heronarts.lx.parameter.LXParameter;
+import heronarts.lx.parameter.*;
 import heronarts.lx.pattern.LXPattern;
 import heronarts.lx.utils.LXUtils;
 import org.slf4j.Logger;
@@ -24,7 +22,10 @@ import java.util.List;
  */
 @LXCategory("Polygon")
 public class PolyTracePattern extends LXPattern {
-    private final Logger logger = LoggerFactory.getLogger(PolyTracePattern.class);
+    private final Logger logger;
+
+    public enum COLOR_MODE { BW, GRADIENT, RANDOM };
+    public final EnumParameter<COLOR_MODE> colorMode = new EnumParameter<>("Color Mode", COLOR_MODE.BW);
 
     public final CompoundParameter rate = (CompoundParameter)
             new CompoundParameter("Rate", 50, 10, 10000)
@@ -46,9 +47,11 @@ public class PolyTracePattern extends LXPattern {
 
     final LampshadeView lampshadeView;
     final List<List<LampshadePolygon>> polyPath = new ArrayList<>();
+    int[] pathColors;
 
     public PolyTracePattern(LX lx) {
         super(lx);
+        this.logger = LoggerFactory.getLogger(PolyTracePattern.class);
 
         this.lampshadeView = new LampshadeView(lx.getModel());
         this.fixedIndex.setRange(0, LXUtils.max(1, lampshadeView.polygons.size()));
@@ -57,11 +60,39 @@ public class PolyTracePattern extends LXPattern {
 //        makePath();
 
 //        addParameter("rate", this.rate);
+        addParameter("colormode", this.colorMode);
         addParameter("fixedIndex", this.fixedIndex);
         addParameter("pathLength", this.pathLength);
         addParameter("progress", this.progress);
 
+        LXParameterListener updatePath = new LXParameterListener() {
+            @Override
+            public void onParameterChanged(LXParameter parameter) {
+                makePath();
+                makeColors();
+            }
+        };
+        this.colorMode.addListener(updatePath);
+        this.fixedIndex.addListener(updatePath);
+        this.pathLength.addListener(updatePath);
+
         startModulator(this.increment);
+    }
+
+    public void makeColors() {
+        // Depending on colormode, make a list of colors (really shades of grey), so each step on the path
+        // is that color and can be colorized.
+        this.pathColors = new int[this.polyPath.size()];
+        for (int i = 0; i < this.polyPath.size(); i++) {
+            int color = LXColor.WHITE;
+
+            switch (this.colorMode.getEnum()) {
+                case GRADIENT: color = LXColor.hsb(0, 0, (double)i / this.polyPath.size() * 100); break;
+                case RANDOM: color = LXColor.hsb(0, 0, Math.random() * 100); break;
+            }
+
+            this.pathColors[i] = color;
+        }
     }
 
     public void makePath() {
@@ -102,11 +133,10 @@ public class PolyTracePattern extends LXPattern {
 
             if (i < Math.floor(progress)) {
                 // Progress is completely past this polygon
-                color = LXColor.WHITE;
+                color = this.pathColors[i];
             } else if (i < Math.ceil(progress)) {
                 // We are currently filling this polygon
-//                logger.trace("Part-filling polygon at progress {}, i = {}, brightness = {}", progress, i, (progress-i)*100);
-                color = LXColor.gray((progress - i) * 100);
+                color = LXColor.lerp(LXColor.BLACK, this.pathColors[i], (progress - i) * 1);
             } else {
                 // We are not yet at this polygon
                 break;
