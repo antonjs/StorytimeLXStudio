@@ -31,10 +31,20 @@ public class WorkLightPattern extends LXPattern {
     addModulator("fader", this.fader);
 
     this.on.addListener((p) -> {
+      if (null == this.getChannel()) return; // Avoid crash when this gets called while initializing the pattern.
+
       if (this.on.isOn()) {
         // Mark this pattern as active so if it isn't already
         // we can trigger activation on the tools channel by
         // hitting 'On' via OSC.
+
+        // Make us active as a pattern.
+        this.getChannel().goPattern(this);
+
+        // Turn on the tools channel if it isn't already.
+        this.getChannel().enabled.setValue(true);
+
+        // Fade in
         this.fader.setRange(0, 1);
         this.fader.reset().trigger();
       } else {
@@ -52,6 +62,11 @@ public class WorkLightPattern extends LXPattern {
 
   @Override
   protected void run(double deltaMs) {
+    if (fader.finished() && !this.on.isOn()) {
+      // Turn off the tools channel if we're fading out.
+      this.getChannel().enabled.setValue(false);
+    }
+
     if (!this.on.isOn() && !this.fader.isRunning()) return;
 
     int color = LXColor.lerp(LXColor.BLACK, WORK_LIGHT_COLOR, this.brightness.getValue()); // Black to light fade for brightness

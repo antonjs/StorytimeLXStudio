@@ -35,6 +35,12 @@
       "max": 10,
       "label": "Spacing",
       "description": "Pixel spacing in inches"
+    },
+    "host": {
+      "type": "string",
+      "default": "localhost",
+      "label": "Host",
+      "description": "Host to output lampshade artnet data to."
     }
   },
 
@@ -49,44 +55,62 @@
   "components": [
     // Vertical back strip before arc
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": -6, "z": 6, "pitch": -90, "yaw": 0, "uverse": 49 },
+      "x": 0, "y": -6, "z": 6, "pitch": -90, "yaw": 0, "uverse": 49, "tag": "port-17",
+      "output": { "protocol": "artnet", "universe": 49, "host": "${host}", "start": 0}},
 
     // Back side 90 degree arc from vertical to vertical. The panels don't make it perfectly flat on the top in the real car, but this is close enough.
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -90, "uverse": 46 },
+      "x": 0, "y": 0, "z": 6, "pitch": -90, "uverse": 46, "tag": "port-16",
+      "output": { "protocol": "artnet", "universe": 46, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -105, "uverse": 43 },
+      "x": 0, "y": 0, "z": 6, "pitch": -105, "uverse": 43, "tag": "port-15",
+      "output": { "protocol": "artnet", "universe": 43, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -120, "uverse": 40 },
+      "x": 0, "y": 0, "z": 6, "pitch": -120, "uverse": 40, "tag": "port-14",
+      "output": { "protocol": "artnet", "universe": 40, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -135, "uverse": 37 },
+      "x": 0, "y": 0, "z": 6, "pitch": -135, "uverse": 37, "tag": "port-13",
+      "output": { "protocol": "artnet", "universe": 37, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -150, "uverse": 34 },
+      "x": 0, "y": 0, "z": 6, "pitch": -150, "uverse": 34, "tag": "port-12",
+      "output": { "protocol": "artnet", "universe": 34, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -165, "uverse": 31 },
+      "x": 0, "y": 0, "z": 6, "pitch": -165, "uverse": 31, "tag": "port-11",
+      "output": { "protocol": "artnet", "universe": 31, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 6, "pitch": -180, "uverse": 28 },
+      "x": 0, "y": 0, "z": 6, "pitch": -180, "uverse": 28, "tag": "port-10",
+      "output": { "protocol": "artnet", "universe": 28, "host": "${host}", "start": 0}},
 
     // Front side 45 degree arc. We reverse the rotation direction to align the origin point of the strip properly.
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 0, "pitch": 0, "uverse": 25 },
+      "x": 0, "y": 0, "z": 0, "pitch": 0, "uverse": 25, "tag": "port-9",
+      "output": { "protocol": "artnet", "universe": 25, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 0, "pitch": -15, "uverse": 22 },
+      "x": 0, "y": 0, "z": 0, "pitch": -15, "uverse": 22, "tag": "port-8",
+      "output": { "protocol": "artnet", "universe": 22, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 0, "pitch": -30, "uverse": 19 },
+      "x": 0, "y": 0, "z": 0, "pitch": -30, "uverse": 19, "tag": "port-7",
+      "output": { "protocol": "artnet", "universe": 19, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 0, "pitch": -45, "uverse": 16 },
+      "x": 0, "y": 0, "z": 0, "pitch": -45, "uverse": 16, "tag": "port-6",
+      "output": { "protocol": "artnet", "universe": 16, "host": "${host}", "start": 0}},
 
     // Front side 45 degree slope down to the bottom.
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": "-6 * 0.707", "z": "-6 * 0.707", "pitch": -45, "uverse": 13 },
+      "x": 0, "y": "-6 * 0.707", "z": "-6 * 0.707", "pitch": -45, "uverse": 13, "tag": "port-5",
+      "output": { "protocol": "artnet", "universe": 13, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": "-12 * 0.707", "z": "-12 * 0.707", "pitch": -45, "uverse": 10 },
+      "x": 0, "y": "-12 * 0.707", "z": "-12 * 0.707", "pitch": -45, "uverse": 10, "tag": "port-4",
+      "output": { "protocol": "artnet", "universe": 10, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": "-18 * 0.707", "z": "-18 * 0.707", "pitch": -45, "uverse": 7 },
+      "x": 0, "y": "-18 * 0.707", "z": "-18 * 0.707", "pitch": -45, "uverse": 7, "tag": "port-3",
+      "output": { "protocol": "artnet", "universe": 7, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": "-24 * 0.707", "z": "-24 * 0.707", "pitch": -45, "uverse": 4 },
+      "x": 0, "y": "-24 * 0.707", "z": "-24 * 0.707", "pitch": -45, "uverse": 4, "tag": "port-2",
+      "output": { "protocol": "artnet", "universe": 4, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
-      "x": 0, "y": "-30 * 0.707", "z": "-30 * 0.707", "pitch": -45, "uverse": 1}
+      "x": 0, "y": "-30 * 0.707", "z": "-30 * 0.707", "pitch": -45, "tag": "port-1",
+      "outputs": [{ "protocol": "artnet", "universe": 1, "host": "${host}", "start": 0}]
+    }
   ]
 }

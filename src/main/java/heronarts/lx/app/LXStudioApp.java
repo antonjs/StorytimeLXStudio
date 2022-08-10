@@ -19,15 +19,13 @@
 package heronarts.lx.app;
 
 import heronarts.lx.LX;
-import heronarts.lx.LXComponent;
 import heronarts.lx.LXPlugin;
-import heronarts.lx.osc.LXOscComponent;
-import heronarts.lx.parameter.BoundedParameter;
 import heronarts.lx.studio.LXStudio;
-import heronarts.lx.studio.UIDashInputs;
+import heronarts.p4lx.ui.component.UIButton;
 import heronarts.p4lx.ui.component.UICollapsibleSection;
 import heronarts.p4lx.ui.component.UIKnob;
 import processing.core.PApplet;
+import storytime.lx.app.DashInputs;
 
 import java.io.File;
 
@@ -76,25 +74,8 @@ public class LXStudioApp extends PApplet implements LXPlugin {
 
   }
 
-  public static class MyComponent extends LXComponent implements LXOscComponent {
-
-    public final BoundedParameter param1 =
-      new BoundedParameter("p1", 0)
-      .setDescription("A global parameter that does something");
-
-    public final BoundedParameter param2 =
-      new BoundedParameter("p2", 0)
-      .setDescription("A global parameter that does something else");
-
-    public MyComponent(LX lx) {
-      super(lx);
-      addParameter("param1", this.param1);
-      addParameter("param2", this.param2);
-    }
-  }
-
-  // A global component for additional project-specific parameters, if desired
-  public MyComponent myComponent;
+  // The Dash Inputs
+   public DashInputs dash;
 
   @Override
   public void initialize(LX lx) {
@@ -108,21 +89,27 @@ public class LXStudioApp extends PApplet implements LXPlugin {
     lx.registry.addPattern(heronarts.lx.app.pattern.AppPatternWithUI.class);
     lx.registry.addEffect(heronarts.lx.app.effect.AppEffect.class);
 
-    // Modulators
-    lx.registry.addModulator(storytime.lx.app.modulator.DashInputs.class);
-
-
     // Create an instance of your global component and register it with the LX engine
     // so that it can be saved and loaded in project files
-    this.myComponent = new MyComponent(lx);
-    lx.engine.registerComponent("myComponent", this.myComponent);
+    this.dash = new DashInputs(lx);
+    lx.engine.registerComponent("dash", this.dash);
 
+//    try {
+//      LXCompoundModulation mod = new LXCompoundModulation(lx.engine.modulation, dash.intensity, dash.vibe);
+//      mod.range.setValue(1);
+//      lx.engine.modulation.addModulation(mod);
+//    } catch (LXParameterModulation.ModulationException e) {
+//      System.out.println(e);
+//    }
 
     // Patterns
+    lx.registry.addPattern(storytime.lx.app.pattern.DebugPattern.class);
     lx.registry.addPattern(storytime.lx.app.pattern.WorkLightPattern.class);
     lx.registry.addPattern(storytime.lx.app.pattern.PolyTestPattern.class);
     lx.registry.addPattern(storytime.lx.app.pattern.PolyTracePattern.class);
     lx.registry.addPattern(storytime.lx.app.pattern.PolyFillPattern.class);
+    lx.registry.addPattern(storytime.lx.app.pattern.PolyScrollPattern.class);
+    lx.registry.addPattern(storytime.lx.app.pattern.PolyScrollSpeedPattern.class);
 
     // Effects
     lx.registry.addEffect(storytime.lx.app.effect.PowerLimiterEffect.class);
@@ -135,23 +122,42 @@ public class LXStudioApp extends PApplet implements LXPlugin {
     // Here is where you may modify the initial settings of the UI before it is fully
     // built. Note that this will not be called in headless mode. Anything required
     // for headless mode should go in the raw initialize method above.
-    UIDashInputs.register(ui);
   }
 
-  public static class UIMyComponent extends UICollapsibleSection {
-    public UIMyComponent(LXStudio.UI ui, MyComponent myComponent) {
-      super(ui, 0, 0, ui.leftPane.global.getContentWidth(), 80);
-      setTitle("MY COMPONENT");
+  public static class UIDash extends UICollapsibleSection {
+    public UIDash(LXStudio.UI ui, DashInputs dash) {
+      super(ui, 0, 0, ui.leftPane.global.getContentWidth(), 240);
+      setTitle("Dash");
+      setLayout(Layout.VERTICAL);
 
-      new UIKnob(0, 0, myComponent.param1).addToContainer(this);
-      new UIKnob(40, 0, myComponent.param2).addToContainer(this);
+      this.newHorizontalContainer(50, 2,
+              new UIKnob(dash.intensity),
+              new UIKnob(dash.vibe),
+              new UIKnob(dash.mood),
+              new UIKnob(dash.disco)
+      ).addToContainer(this);
+
+      float width = 40;
+      this.newHorizontalContainer(50, 2,
+              new UIKnob(dash.transition),
+              new UIButton(width, width, dash.auto),
+              new UIButton(width, width, dash.effect),
+              new UIKnob(dash.user)
+      ).addToContainer(this);
+
+      this.newHorizontalContainer(50, 2,
+              new UIButton(width, width, dash.trigger1).setTriggerable(true),
+              new UIButton(width, width, dash.trigger2).setTriggerable(true),
+              new UIButton(width, width, dash.trigger3).setTriggerable(true),
+              new UIButton(width, width, dash.trigger4).setTriggerable(true)
+      ).addToContainer(this);
     }
   }
 
   public void onUIReady(LXStudio lx, LXStudio.UI ui) {
     // At this point, the LX Studio application UI has been built. You may now add
     // additional views and components to the UI hierarchy.
-    new UIMyComponent(ui, this.myComponent)
+    new UIDash(ui, this.dash)
     .addToContainer(ui.leftPane.global);
   }
 
