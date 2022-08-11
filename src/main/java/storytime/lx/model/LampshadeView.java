@@ -63,6 +63,7 @@ public class LampshadeView {
             }
         }
 
+
         this.polygons = Collections.unmodifiableList(polygons);
     }
 
