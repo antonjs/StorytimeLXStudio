@@ -111,6 +111,7 @@ public class LXStudioApp extends PApplet implements LXPlugin {
     lx.registry.addPattern(storytime.lx.app.pattern.PolyScrollPattern.class);
     lx.registry.addPattern(storytime.lx.app.pattern.PolyScrollSpeedPattern.class);
     lx.registry.addPattern(storytime.lx.app.pattern.PolyRandomFillPattern.class);
+    lx.registry.addPattern(storytime.lx.app.pattern.SpritePattern.class);
 
     // Effects
     lx.registry.addEffect(storytime.lx.app.effect.PowerLimiterEffect.class);
