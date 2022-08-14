@@ -122,7 +122,26 @@ public class DashInputs extends LXComponent implements LXOscComponent {
                 for (LXAbstractChannel channel : lx.engine.mixer.getChannels()) {
                     if (channel instanceof LXChannel) {
                         LXChannel c = (LXChannel)channel;
-                        c.autoCycleTimeSecs.setNormalized(parameter.getValue());
+
+                        // Multiply by 0.05 because the full range of transition times goes up to like 4 hours.
+                        // We want something like 15 minutes. We should also set the time it takes for transitions to
+                        // complete to some fraction of this (so longer switch time == longer transition between).
+                        c.autoCycleTimeSecs.setNormalized(parameter.getValue() * 0.05);
+                        c.transitionTimeSecs.setNormalized(parameter.getValue());
+                    }
+                }
+            }
+        });
+
+        this.auto.addListener(new LXParameterListener() {
+            @Override
+            public void onParameterChanged(LXParameter parameter) {
+                for (LXAbstractChannel channel : lx.engine.mixer.getChannels()) {
+                    if (channel instanceof LXChannel) {
+                        LXChannel c = (LXChannel)channel;
+                        if (c.getLabel() == "Tools") continue;
+
+                        c.autoCycleEnabled.setValue(parameter.getValue());
                     }
                 }
             }
