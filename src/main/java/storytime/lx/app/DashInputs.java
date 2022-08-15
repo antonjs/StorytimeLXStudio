@@ -146,5 +146,13 @@ public class DashInputs extends LXComponent implements LXOscComponent {
                 }
             }
         });
+
+        this.effect.addListener(new LXParameterListener() {
+            @Override
+            public void onParameterChanged(LXParameter parameter) {
+                LXChannel c = (LXChannel) lx.engine.mixer.getChannel("Effect");
+                c.enabled.setValue(parameter.getValue());
+            }
+        });
     }
 }

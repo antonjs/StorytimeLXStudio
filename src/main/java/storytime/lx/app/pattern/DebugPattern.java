@@ -7,9 +7,7 @@ import heronarts.lx.mixer.LXChannel;
 import heronarts.lx.model.LXModel;
 import heronarts.lx.model.LXPoint;
 import heronarts.lx.modulator.LinearEnvelope;
-import heronarts.lx.parameter.BooleanParameter;
-import heronarts.lx.parameter.CompoundParameter;
-import heronarts.lx.parameter.EnumParameter;
+import heronarts.lx.parameter.*;
 import heronarts.lx.pattern.LXPattern;
 import storytime.lx.model.LampshadeView;
 
@@ -31,13 +29,16 @@ public class DebugPattern extends LXPattern {
           .setMode(BooleanParameter.Mode.TOGGLE)
           .setValue(false);
 
+  public final BooleanParameter all = new BooleanParameter("All")
+          .setDescription("Toggle all ports");
+
   public final CompoundParameter brightness = new CompoundParameter("Brightness", 1, 1)
           .setDescription("Brightness percentage");
   public final CompoundParameter r = new CompoundParameter("R", 255, 0, 255);
   public final CompoundParameter g = new CompoundParameter("G", 0, 0, 255);
   public final CompoundParameter b = new CompoundParameter("B", 0, 0, 255);
 
-  public final CompoundParameter pixel = new CompoundParameter("Pixel", 0, 1);
+  public final CompoundParameter pixel; // = new CompoundParameter("Pixel", 0, 1);
 
   public final EnumParameter<MODE> mode = new EnumParameter<MODE>("Mode", MODE.PORT);
 
@@ -59,27 +60,18 @@ public class DebugPattern extends LXPattern {
 //    g.setMappable(true);
 //    pixel.setMappable(true);
 
-    addParameter("on", this.on);
-    addParameter("brightness", this.brightness);
-    addParameter("r", this.r);
-    addParameter("g", this.g);
-    addParameter("b", this.b);
-    addParameter("pixel", this.pixel);
-    addParameter("mode", this.mode);
-
-    addModulator("fader", this.fader);
-
-     for (int i = 1; i <= NUM_PORTS; i++) {
+    int maxPortPoints = 0;
+    for (int i = 1; i <= NUM_PORTS; i++) {
       BooleanParameter portOn = new BooleanParameter(String.format("%d", i))
               .setDescription(String.format("Port %d is on", i))
               .setMode(BooleanParameter.Mode.TOGGLE)
               .setValue(true);
 
       ports.add(portOn);
-      addParameter(String.format("port-%d", i), portOn);
-    }
 
-//    this.pixel.set.setRange(0, maxPortPoints);
+      maxPortPoints = Math.max(maxPortPoints, getPortPoints(i).size());
+    }
+    this.pixel = new CompoundParameter("Pixel", 0, 0, maxPortPoints);
 
     this.on.addListener((p) -> {
       if (null == this.getChannel()) return; // Avoid crash when this gets called while initializing the pattern.
@@ -108,8 +100,27 @@ public class DebugPattern extends LXPattern {
       }
     });
 
-    fader.setLooping(false);
-    fader.reset().trigger();
+    this.all.addListener(new LXParameterListener() {
+      @Override
+      public void onParameterChanged(LXParameter parameter) {
+        for (BooleanParameter port : ports) {
+          port.setValue(parameter.getValue());
+        }
+      }
+    });
+
+    addParameter("on", this.on);
+    addParameter("brightness", this.brightness);
+    addParameter("r", this.r);
+    addParameter("g", this.g);
+    addParameter("b", this.b);
+    addParameter("pixel", this.pixel);
+    addParameter("mode", this.mode);
+    addParameter("all", this.all);
+
+    for (int i = 0; i < NUM_PORTS; i++) {
+      addParameter(String.format("port-%d", i), this.ports.get(i));
+    }
   }
 
   @Override
@@ -164,7 +175,7 @@ public class DebugPattern extends LXPattern {
         }
       }
     } else if (mode.getEnum() == MODE.POLY) {
-      int polyIndex = Math.min((int)(pixel.getValue()*lampshadeView.polygons.size()), this.lampshadeView.polygons.size()-1);
+      int polyIndex = Math.min((int)(pixel.getValue()), this.lampshadeView.polygons.size()-1);
       points = this.lampshadeView.polygons.get(polyIndex).points;
     } else if (mode.getEnum() == MODE.CORNER) {
       for (BooleanParameter port : ports) {
@@ -190,7 +201,7 @@ public class DebugPattern extends LXPattern {
       }
     } else if (mode.getEnum() == MODE.PIXEL) {
       for (BooleanParameter port : ports) {
-        int pixelIndex = (int)(pixel.getValue() * (portPixelCount()-1));
+        int pixelIndex = (int)Math.min(pixel.getValue(), (portPixelCount()-1));
 
         if (port.isOn()) {
           List<LXPoint> portPoints = getPortPoints(port.getLabel());

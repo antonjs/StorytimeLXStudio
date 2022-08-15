@@ -5,9 +5,7 @@ import heronarts.lx.LXCategory;
 import heronarts.lx.color.LXColor;
 import heronarts.lx.effect.LXEffect;
 import heronarts.lx.model.LXPoint;
-import heronarts.lx.parameter.CompoundParameter;
 import heronarts.lx.parameter.EnumParameter;
-import heronarts.lx.utils.LXUtils;
 import storytime.lx.model.LampshadePolygon;
 import storytime.lx.model.LampshadeView;
 
@@ -16,8 +14,13 @@ import java.util.Map;
 
 @LXCategory("Polygon")
 public class PolyizeEffect extends LXEffect {
+    public final int ALPHA = LXColor.hsba(0, 0, 0, 0);
+
     public enum Mode { MAX, ADD, MEAN, MODE };
     public final EnumParameter<Mode> mode = new EnumParameter<>("Mode", Mode.MAX);
+
+    public enum Background { BLACK, ALPHA }
+    public final EnumParameter<Background> background = new EnumParameter<>("Background", Background.ALPHA);
 
     private final LampshadeView lampshadeView;
 
@@ -27,13 +30,19 @@ public class PolyizeEffect extends LXEffect {
         this.lampshadeView = new LampshadeView(lx.getModel());
 
         addParameter("mode", this.mode);
-
+        addParameter("background", this.background);
     }
 
     @Override
     protected void run(double v, double v1) {
+        int bg = LXColor.BLACK;
+        switch (this.background.getEnum()) {
+            case ALPHA: bg = ALPHA; break;
+        }
+
         for (LampshadePolygon poly : this.lampshadeView.polygons) {
-            int target = LXColor.BLACK;
+            int target = bg;
+
             int targetSum = 0;
             Map<Integer, Integer> colorCounts = new HashMap<>();
 
