@@ -185,6 +185,7 @@ public class DebugPattern extends LXPattern {
             int length = Integer.parseInt(model.meta("length"));
             int width = Integer.parseInt(model.meta("width"));
 
+
             points.add(modelPoints.get(0)); // Start corner
             points.add(modelPoints.get(modelPoints.size()-1));
 

@@ -20,6 +20,14 @@
       "label": "Width",
       "description": "Width in pixels"
     },
+    "ledoffset": {
+      "type": "int",
+      "default": 0,
+      "min": 0,
+      "max": 300,
+      "label": "LED Offset",
+      "description": "How rotated the strip is from the start point"
+    },
     "yoffset": {
       "type": "float",
       "default": 0,
@@ -56,11 +64,11 @@
   "components": [
     {
       "type": "strip",
-      "numPoints": "${width}",
+      "numPoints": "${width}-${ledoffset}",
       "spacing": "${spacing}",
       "x": 0,
       "y": "${yoffset}",
-      "z": "${zoffset} + ${width} * ${spacing} - ${spacing}/2",
+      "z": "${zoffset} + ${width} * ${spacing} - ${spacing} - ${spacing}/2",
       "yaw": -270
     },
     {

@@ -66,6 +66,7 @@ public class PolyScrollPattern extends LXPattern {
     public void run(double deltaMs) {
         for (int i = 0; i < lampshadeView.polygons.size(); i++) {
             for (LXPoint point : lampshadeView.polygons.get(i).points) {
+                // TODO: remove branches
                 double color = (this.start.getValue() + this.polyOffsets[i] * spread.getValue()) % 1;
                 colors[point.index] = LXColor.hsb(
                         mode.getEnum() == MODE.HUE ? color * 360 : this.palette.getHue(),

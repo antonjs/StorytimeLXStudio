@@ -6,7 +6,7 @@
   "parameters": {
     "striplength": {
       "type": "int",
-      "default": 141,
+      "default": 142,
       "min": 0,
       "max": 1000,
       "label": "Length",
@@ -14,7 +14,7 @@
     },
     "stripwidth": {
       "type": "int",
-      "default": 9,
+      "default": 8,
       "min": 0,
       "max": 1000,
       "label": "Width",
@@ -56,30 +56,44 @@
     // Vertical back strip before arc
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
       "x": 0, "y": -6, "z": 6, "pitch": -90, "yaw": 0, "uverse": 49, "tag": "port-17",
-      "output": { "protocol": "artnet", "universe": 49, "host": "${host}", "start": 0}},
+      "output": { "protocol": "artnet", "universe": 49, "host": "${host}",
+        "segments": [{ "start":  298, "num":  2 }, { "start":  0, "num":  298 }]
+      }},
 
     // Back side 90 degree arc from vertical to vertical. The panels don't make it perfectly flat on the top in the real car, but this is close enough.
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
       "x": 0, "y": 0, "z": 6, "pitch": -90, "uverse": 46, "tag": "port-16",
-      "output": { "protocol": "artnet", "universe": 46, "host": "${host}", "start": 0}},
+      "output": { "protocol": "artnet", "universe": 46, "host": "${host}",
+        "segments": [{ "start":  297, "num":  3 }, { "start":  0, "num":  297 }]
+      }},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
       "x": 0, "y": 0, "z": 6, "pitch": -105, "uverse": 43, "tag": "port-15",
-      "output": { "protocol": "artnet", "universe": 43, "host": "${host}", "start": 0}},
+      "output": { "protocol": "artnet", "universe": 43, "host": "${host}",
+        "segments": [{ "start":  298, "num":  2 }, { "start":  0, "num":  298 }]
+      }},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
       "x": 0, "y": 0, "z": 6, "pitch": -120, "uverse": 40, "tag": "port-14",
-      "output": { "protocol": "artnet", "universe": 40, "host": "${host}", "start": 0}},
+      "output": { "protocol": "artnet", "universe": 40, "host": "${host}",
+        "segments": [{ "start":  298, "num":  2 }, { "start":  0, "num":  298 }]
+      }},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
       "x": 0, "y": 0, "z": 6, "pitch": -135, "uverse": 37, "tag": "port-13",
-      "output": { "protocol": "artnet", "universe": 37, "host": "${host}", "start": 0}},
+      "output": { "protocol": "artnet", "universe": 37, "host": "${host}",
+        "segments": [{ "start":  299, "num":  1 }, { "start":  0, "num":  299 }]
+      }},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
       "x": 0, "y": 0, "z": 6, "pitch": -150, "uverse": 34, "tag": "port-12",
       "output": { "protocol": "artnet", "universe": 34, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
       "x": 0, "y": 0, "z": 6, "pitch": -165, "uverse": 31, "tag": "port-11",
-      "output": { "protocol": "artnet", "universe": 31, "host": "${host}", "start": 0}},
+      "output": { "protocol": "artnet", "universe": 31, "host": "${host}",
+        "segments": [{ "start":  298, "num":  1 }, { "start":  0, "num":  299 }]
+      }},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "-1 * ${radius}", "zoffset": "-3", "spacing": "${spacing}",
       "x": 0, "y": 0, "z": 6, "pitch": -180, "uverse": 28, "tag": "port-10",
-      "output": { "protocol": "artnet", "universe": 28, "host": "${host}", "start": 0}},
+      "output": { "protocol": "artnet", "universe": 28, "host": "${host}",
+        "segments": [{ "start":  299, "num":  1 }, { "start":  0, "num":  299 }]
+      }},
 
     // Front side 45 degree arc. We reverse the rotation direction to align the origin point of the strip properly.
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
@@ -90,7 +104,9 @@
       "output": { "protocol": "artnet", "universe": 22, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
       "x": 0, "y": 0, "z": 0, "pitch": -30, "uverse": 19, "tag": "port-7",
-      "output": { "protocol": "artnet", "universe": 19, "host": "${host}", "start": 0}},
+      "output": { "protocol": "artnet", "universe": 19, "host": "${host}",
+        "segments": [{ "start":  298, "num":  2 }, { "start":  0, "num":  298 }]
+      }},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
       "x": 0, "y": 0, "z": 0, "pitch": -45, "uverse": 16, "tag": "port-6",
       "output": { "protocol": "artnet", "universe": 16, "host": "${host}", "start": 0}},
@@ -110,7 +126,9 @@
       "output": { "protocol": "artnet", "universe": 4, "host": "${host}", "start": 0}},
     { "type": "squarestrip", "length": "${striplength}", "width": "${stripwidth}", "yoffset": "${radius}", "zoffset": "-3", "spacing": "${spacing}",
       "x": 0, "y": "-30 * 0.707", "z": "-30 * 0.707", "pitch": -45, "tag": "port-1",
-      "outputs": [{ "protocol": "artnet", "universe": 1, "host": "${host}", "start": 0}]
+      "outputs": [{ "protocol": "artnet", "universe": 1, "host": "${host}",
+        "segments": [{ "start":  1, "num":  299 }, { "start":  0, "num":  1 }]
+      }]
     }
   ]
 }
