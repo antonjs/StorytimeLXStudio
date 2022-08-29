@@ -6,9 +6,7 @@ import heronarts.lx.model.LXView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * View of the lampshade part of the model.
@@ -24,6 +22,7 @@ public class LampshadeView {
     public final LXPoint[] points;
     public final List<LampshadePolygon> polygons;
     public final List<LampshadeSprite> sprites;
+    public final Map<String, LampshadeSprite> spriteNames = new HashMap<>();
 
     public LampshadeView(LXModel model) {
         this.view = LXView.create(model, LAMPSHADE_TAG, LXView.Normalization.RELATIVE);
@@ -68,7 +67,20 @@ public class LampshadeView {
         List<LampshadeSprite> sprites = new ArrayList<>();
         sprites.add(LampshadeSprite.fromPolys("Heart", getPolysById(HEART_POLYS)));
         sprites.add(LampshadeSprite.fromPolys("Dragonfly", getPolysById(DRAGONFLY_POLYS)));
+        sprites.add(LampshadeSprite.fromPolys("Lamp", getPolysById(LAMP_POLYS)));
+        sprites.add(LampshadeSprite.fromPolys("Mountain", getPolysById(MOUNTAIN_POLYS)));
+
+        List<LampshadePolygon> allRoses = new ArrayList<>();
+        for (int[] rose : ROSE_POLYS) {
+            allRoses.addAll(getPolysById(rose));
+            sprites.add(LampshadeSprite.fromPolys("Rose", getPolysById(rose)));
+        }
+        sprites.add(LampshadeSprite.fromPolys("Roses", allRoses));
         this.sprites = Collections.unmodifiableList(sprites);
+
+        for (LampshadeSprite sprite : this.sprites) {
+            this.spriteNames.put(sprite.name, sprite);
+        }
     }
 
     List<LampshadePolygon> getPolysById(int[] ids) {
@@ -83,66 +95,23 @@ public class LampshadeView {
         return polys;
     }
 
-    public static final int[] HEART_POLYS = //{110, 111, 119, 132, 133, 134, 145, 155, 157};
-    {6,
-            8,
-            10,
-            26,
-            27,
-            28,
-            29,
-            30,
-            31,
-            48,
-            49,
-            50,
-            53,
-            82,
-            228,
-            269,
-            291,
-            292,
-            293,
-            294,
-            295,
-            312,
-            314,
-            316};
-    public static final int[] DRAGONFLY_POLYS = {223,
-            224,
-            225,
-            226,
-            230,
-            231,
-            232,
-            233,
-            238,
-            240,
-            245,
-            246,
-            251,
-            252,
-            255,
-            268,
-            271,
-            274,
-            275,
-            276,
-            277,
-            278,
-            280,
-            281,
-            283,
-            284,
-            298,
-            299,
-            300,
-            302,
-            303,
-            320,
-            322,
-            323,
-            324};
+    public static final int[] HEART_POLYS = {132, 133, 134, 110, 111, 145, 119, 155, 157};
+    public static final int[] DRAGONFLY_POLYS = {6, 8, 10, 269, 26, 27, 28, 29, 30, 31, 291, 292, 293, 294, 295, 48, 49, 50, 53, 312, 314, 316, 207, 82, 228};
+    public static final int[][] ROSE_POLYS = {
+            {0, 2, 38, 39, 40, 41, 42, 43, 70, 19, 21, 22, 23},
+            {89, 34, 35, 36, 37, 14, 16, 17, 18, 55, 56, 57, 58, 59},
+            {66, 67, 68, 75, 76, 77, 46, 78, 112, 95},
+            {109, 83, 52, 84, 85, 86, 94, 61, 62, 63},
+            {169, 170, 171, 172, 151, 152, 183, 184, 153},
+            {160, 161, 192, 193, 177, 178, 179},
+            {224, 225, 226, 268, 240, 245, 246, 283, 284, 223},
+            {230, 231, 232, 233, 238, 271, 280, 281, 251, 252},
+            {320, 322, 323, 324, 298, 299, 300, 301, 302, 303, 274, 275, 276, 277, 278, 255},
+            {288, 289, 262, 263, 264, 265, 327, 328, 304, 305, 306, 308, 150, 286, 287}
+    };
+
+    public static final int[] LAMP_POLYS = {129, 130, 131, 132, 133, 134, 135, 136, 137, 141, 143, 144, 145, 146, 147, 148, 150, 153, 154, 155, 156, 157, 158, 159, 162, 291, 292, 165, 166, 293, 294, 173, 174, 53, 186, 187, 188, 189, 190, 68, 205, 206, 207, 208, 247, 227, 228, 239, 116, 118, 119, 120, 122};
+    public static final int[] MOUNTAIN_POLYS = {3, 8, 13, 18, 19, 20, 21, 22, 23, 24, 28, 29, 33, 34, 44, 45, 49, 52, 53, 54, 60, 61, 69, 73, 74, 76, 77, 79, 81, 84, 87, 88, 94, 95, 103, 110, 111, 118, 119, 120, 131, 132, 133, 134, 135, 145, 156, 174, 187, 189, 205, 206, 208, 209, 217, 218, 221, 222, 223, 228, 233, 234, 235, 244, 259, 266, 272, 273, 290, 292, 293, 295, 296, 309, 313, 314, 318, 319};
 
     public static final int[][] POLYGON_POINTS = {
             {0,293,294,295,296,297,298,299,307,308,309,310,311,312,313,314,595,596,597,598},

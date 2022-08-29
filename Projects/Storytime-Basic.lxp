@@ -1,6 +1,6 @@
 {
   "version": "0.4.1",
-  "timestamp": 1660719922236,
+  "timestamp": 1661570192102,
   "model": {
     "id": 2,
     "class": "heronarts.lx.structure.LXStructure",
@@ -52,9 +52,9 @@
           "pitch": 0.0,
           "roll": 0.0,
           "scale": 1.0,
-          "selected": false,
+          "selected": true,
           "deactivate": false,
-          "enabled": true,
+          "enabled": false,
           "brightness": 1.0,
           "identify": false,
           "mute": false,
@@ -116,7 +116,7 @@
           "pitch": 0.0,
           "roll": 0.0,
           "scale": 1.0,
-          "selected": true,
+          "selected": false,
           "deactivate": false,
           "enabled": false,
           "brightness": 1.0,
@@ -1894,7 +1894,7 @@
               "label": "Lampshade",
               "arm": false,
               "selected": false,
-              "enabled": true,
+              "enabled": false,
               "cue": false,
               "fader": 0.39999999664723873,
               "crossfadeGroup": 0,
@@ -2438,6 +2438,46 @@
                   }
                 },
                 "deviceVersion": -1
+              },
+              {
+                "id": 22474,
+                "class": "storytime.lx.app.pattern.SpriteMagicPattern",
+                "internal": {
+                  "modulationColor": 0,
+                  "expanded": true,
+                  "modulationExpanded": false,
+                  "autoCycleEligible": true
+                },
+                "parameters": {
+                  "label": "SpriteMagic",
+                  "recall": false,
+                  "heart": false,
+                  "pulse": false,
+                  "dragonfly": false,
+                  "flap": false,
+                  "roses": false,
+                  "flash": false,
+                  "lamp": false,
+                  "glow": false,
+                  "mountain": false
+                },
+                "children": {
+                  "modulation": {
+                    "id": 22475,
+                    "class": "heronarts.lx.modulation.LXModulationEngine",
+                    "internal": {
+                      "modulationColor": 0
+                    },
+                    "parameters": {
+                      "label": "Modulation"
+                    },
+                    "children": {},
+                    "modulators": [],
+                    "modulations": [],
+                    "triggers": []
+                  }
+                },
+                "deviceVersion": -1
               }
             ]
           },
@@ -2887,7 +2927,7 @@
               "exp": 0.0
             },
             "children": {},
-            "basis": 0.24310375353755376
+            "basis": 0.9636397508140675
           },
           {
             "id": 3433,
@@ -2914,7 +2954,7 @@
               "exp": 0.0
             },
             "children": {},
-            "basis": 0.972415014150215
+            "basis": 0.85455900325627
           },
           {
             "id": 3515,
@@ -2941,7 +2981,7 @@
               "exp": 0.0
             },
             "children": {},
-            "basis": 0.8107759383843884
+            "basis": 0.4909099377035169
           }
         ],
         "modulations": [
@@ -3285,8 +3325,8 @@
         },
         "parameters": {
           "label": "Output",
-          "enabled": true,
-          "brightness": 0.41787874281152715,
+          "enabled": false,
+          "brightness": 0.6579567050804698,
           "fps": 0.0,
           "gamma": 1.0,
           "gammaMode": 1
