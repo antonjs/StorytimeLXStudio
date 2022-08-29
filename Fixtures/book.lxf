@@ -51,6 +51,12 @@
       "max": 512,
       "label": "Universe",
       "description": "Artnet Universe"
+    },
+    "host": {
+      "type": "string",
+      "default": "localhost",
+      "label": "Host",
+      "description": "Host to output artnet data to."
     }
   },
 
@@ -64,8 +70,12 @@
   // Bottom book is 171 x 98 LEDs (inset in 10' x 6' book)
   "components": [
     { "type": "squarestrip", "length": "${length}", "width": "${width}", "spacing": "${spacing}",
-      "x": 0, "y": "${height}", "z": 0, "pitch": 180, "uverse": "${uverseTop}"},
+      "x": 0, "y": "${height}", "z": 0, "pitch": 180,
+      "output": { "protocol": "artnet", "universe": "${uverseTop}", "host": "${host}", "start": 0}
+      },
     { "type": "squarestrip", "length": "${length}", "width": "${width}", "spacing": "${spacing}",
-      "x": 0, "y": 0, "z": 0, "pitch": 180, "uverse":  "${uverseBottom}"}
+      "x": 0, "y": 0, "z": 0, "pitch": 180,
+      "output": { "protocol": "artnet", "universe": "${uverseBottom}", "host": "${host}", "start": 0}
+    }
   ]
 }
