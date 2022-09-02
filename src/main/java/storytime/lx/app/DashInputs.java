@@ -77,7 +77,7 @@ public class DashInputs extends LXComponent implements LXOscComponent {
         this.intensity.addListener(new LXParameterListener() {
             @Override
             public void onParameterChanged(LXParameter parameter) {
-                lx.engine.output.brightness.setNormalized(parameter.getValue());
+                lx.engine.mixer.masterBus.getEffect("OutputGamma").getParameter("brightness").setValue(parameter.getValue());
             }
         });
 

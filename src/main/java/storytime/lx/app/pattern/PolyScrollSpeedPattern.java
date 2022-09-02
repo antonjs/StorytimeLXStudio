@@ -25,7 +25,7 @@ import java.util.List;
 public class PolyScrollSpeedPattern extends LXPattern {
     private final Logger logger = LoggerFactory.getLogger(PolyScrollSpeedPattern.class);
 
-    public final float[] beatDivisions = new float[] { 1f/4, 1f/2, 1f, 2f, 4f, 8f, 16f };
+    public final float[] beatDivisions = new float[] { 4f, 8f, 16f, 32f, 64f, 128f };
     public enum MODTYPE { LINEAR, SIN };
     public enum MODE { HUE, SATURATION, BRIGHTNESS };
 

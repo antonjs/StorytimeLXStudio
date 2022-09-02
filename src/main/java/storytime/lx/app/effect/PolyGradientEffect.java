@@ -7,12 +7,9 @@ import heronarts.lx.effect.LXEffect;
 import heronarts.lx.model.LXPoint;
 import heronarts.lx.parameter.CompoundParameter;
 import heronarts.lx.parameter.EnumParameter;
-import heronarts.lx.transform.LXVector;
 import heronarts.lx.utils.LXUtils;
 import storytime.lx.model.LampshadePolygon;
 import storytime.lx.model.LampshadeView;
-
-import javax.swing.plaf.ComponentUI;
 
 @LXCategory("Polygon")
 public class PolyGradientEffect extends LXEffect {
@@ -37,7 +34,6 @@ public class PolyGradientEffect extends LXEffect {
         addParameter("hue", this.hue);
         addParameter("saturation", this.sat);
         addParameter("brightness", this.bri);
-
     }
 
     double distn(LXPoint a, LXPoint b) {
@@ -56,6 +52,8 @@ public class PolyGradientEffect extends LXEffect {
                 LXPoint point = poly.points.get((i + start) % poly.points.size());
 
                 int color = colors[point.index];
+
+                if (color == LXColor.rgba(0,0,0,0)) continue;
 
                 double amount;
                 switch (this.gradMode.getEnum()) {

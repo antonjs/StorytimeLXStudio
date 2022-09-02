@@ -38,7 +38,7 @@ public class OutputGammaEffect extends LXEffect {
 
     public OutputGammaEffect(LX lx) {
         super(lx);
-        this.addParameter("limitcurrent", this.brightness);
+        this.addParameter("brightness", this.brightness);
         this.addParameter("gamma", this.gamma);
         this.addParameter("dither", this.ditherBits);
 
