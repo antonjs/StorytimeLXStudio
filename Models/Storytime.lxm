@@ -1,0 +1,102 @@
+{
+  "fixtures": [
+    {
+      "jsonFixtureType": "lampshade",
+      "jsonParameters": {
+        "striplength": 141,
+        "stripwidth": 9,
+        "radius": 22.0,
+        "spacing": 0.6499999761581421
+      },
+      "id": 51,
+      "class": "heronarts.lx.structure.JsonFixture",
+      "internal": {
+        "modulationColor": 0
+      },
+      "parameters": {
+        "label": "Lampshade",
+        "x": -10.0,
+        "y": 96.0,
+        "z": -2.0,
+        "yaw": 0.0,
+        "pitch": 0.0,
+        "roll": 0.0,
+        "scale": 1.0,
+        "selected": true,
+        "deactivate": false,
+        "enabled": false,
+        "brightness": 1.0,
+        "identify": false,
+        "mute": false,
+        "solo": false,
+        "tags": "",
+        "fixtureType": "lampshade"
+      },
+      "children": {}
+    },
+    {
+      "jsonFixtureType": "books",
+      "jsonParameters": {
+        "spacing": 0.656000018119812
+      },
+      "id": 137,
+      "class": "heronarts.lx.structure.JsonFixture",
+      "internal": {
+        "modulationColor": 0
+      },
+      "parameters": {
+        "label": "Books",
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "yaw": 0.0,
+        "pitch": 0.0,
+        "roll": 0.0,
+        "scale": 1.0,
+        "selected": false,
+        "deactivate": false,
+        "enabled": false,
+        "brightness": 1.0,
+        "identify": false,
+        "mute": false,
+        "solo": false,
+        "tags": "",
+        "fixtureType": "books"
+      },
+      "children": {}
+    },
+    {
+      "jsonFixtureType": "pole",
+      "jsonParameters": {
+        "height": 120,
+        "width": 6.0,
+        "spacing": 0.656000018119812
+      },
+      "id": 31,
+      "class": "heronarts.lx.structure.JsonFixture",
+      "internal": {
+        "modulationColor": 0
+      },
+      "parameters": {
+        "label": "Pole",
+        "x": -54.0,
+        "y": 18.0,
+        "z": 26.0,
+        "yaw": -90.0,
+        "pitch": 0.0,
+        "roll": 0.0,
+        "scale": 1.0,
+        "selected": true,
+        "deactivate": false,
+        "enabled": false,
+        "brightness": 1.0,
+        "identify": false,
+        "mute": false,
+        "solo": false,
+        "tags": "",
+        "fixtureType": "pole"
+      },
+      "children": {}
+    }
+  ]
+}
